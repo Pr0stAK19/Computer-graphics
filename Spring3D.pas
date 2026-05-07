@@ -108,6 +108,14 @@ begin
    
    Trans3D.MakeS(a, a, a, S);
    TransPolyhedr(Poly, S);
+
+   var //Блок поворота пружинки на 90 градусов
+     RotationMatrix: Mat3D;
+   begin
+     Trans3D.MakeRz(Pi/2,RotationMatrix); //Создание матрицы аоворота на 90 градусов по оси z
+     TransPolyhedr(Poly, RotationMatrix); // Применение матрицы к пружинке
+     RotateNormals(Poly, RotationMatrix); // Преобразование нормалей
+   end;//Конец блока
    
    SetPolyhedrColor(Poly, 0.8, 0.8, 0.1, 0); 
    
